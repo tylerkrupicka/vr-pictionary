@@ -1,2 +1,2 @@
-from .Engine import Engine
+from .engine import Engine
 from .defines import *
