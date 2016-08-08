@@ -1,4 +1,6 @@
-movies = ["The Shawshank Redemption (1994)",
+NAME = "Easy"
+
+CARDS = ["The Shawshank Redemption (1994)",
    "The Godfather (1972)",
    "The Godfather: Part II (1974)",
    "The Dark Knight (2008)",

@@ -1,62 +1,74 @@
 import sys
 
+class CategoryNotFoundException(Exception):
+   def __init__(self, category):
+      self.category = category
+
+class DeckNotFoundException(Exception):
+   def __init__(self, deck):
+      self.deck = deck
+
 def start():
-   print("\nPick a category.");
+   print()
    for id in categories:
-      print("%d) %s" % (id, categories[id]));
+      print("%d) %s" % (id, categories[id][NAME]))
    
    try:
-      category = int(input(""));
+      category = int(input("Pick a category: "))
       category = categories[category]
    except (ValueError, KeyError):
-      print("Not a valid category");
-      sys.exit();
+      print("Not a valid category")
+      return
 
-   print("\nChoose a difficulty.");
-   print("1) Easy");
-   print("2) Medium");
-   print("3) Hard");
+
+   id = 1
+   print()
+   for deck in category[DECKS]:
+      print("%d) %s" % (id, deck))
+      id += 1
 
    try:
-      difficulty = int(input(""));
-      if difficulty not in range(0,5):
-         raise ValueError;
+      deck = int(input("Pick a deck: "))
+      if deck not in range(1,id):
+         raise ValueError
    except ValueError:
-      print("Not a valid difficulty");
-      sys.exit();
+      print("Not a valid deck")
+      return
 
    try:
-      engine = Engine(category, difficulty);
+      engine = Engine(category[GET_CARDS](deck))
 
       # Implement try/except to print score
-      engine.letsPlay();
+      engine.letsPlay()
    except NotImplementedError as e:
-      raise e;
+      raise e
 
 def main():
-   print("Welcome to Pictionary");
+   print("Welcome to Pictionary!")
 
    while True:
       try:
-         start();
+         start()
       except (EOFError, KeyboardInterrupt):
+         pass
+      finally:
          if input("\nPlay again? (y/n) ").lower() != "y":
-            break;
+            break
 
 if __name__ == '__main__':
 
    import os
-   path = os.path.dirname(sys.modules[__name__].__file__);
-   path = os.path.join(path, '..');
+   path = os.path.dirname(sys.modules[__name__].__file__)
+   path = os.path.join(path, '..')
    if (path not in sys.path):
-      sys.path.insert(0, path);
+      sys.path.insert(0, path)
 
-   from vr_pictionary import Engine, categories
+   from vr_pictionary import Engine, categories, NAME, DECKS, GET_CARDS
 
    try:
-      main();
+      main()
    except (EOFError, KeyboardInterrupt):
       pass
 
    print("\nAll done!\n")
-   sys.exit();
+   sys.exit()
