@@ -1,3 +1,5 @@
-movies = [
-   "Hard"
+NAME = "Hard"
+
+CARDS = [
+   "not implemented"
 ]
