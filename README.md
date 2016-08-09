@@ -10,8 +10,8 @@ To run, just enter the following command:
 1. Create a directory within vr_pictionary
 1. Copy the __init__.py file from vr_pictionary/movies to the new directory
 1. Change the `NAME` variable at the top of the new __init__.py file to the desired category name
- * Note: Category names _MUST_ be unique. If the category already exists, see [below](.#Add-Decks) on adding new decks to an existing category
-1. Viola, you have created a category. See [below](.#Add Decks) for instructions on how to add decks to your category
+ * Note: Category names _MUST_ be unique. If the category already exists, see [below](#Add-Decks) on adding new decks to an existing category
+1. Viola, you have created a category. See [below](#Add Decks) for instructions on how to add decks to your category
 
 #### Add Decks
 
