@@ -293,5 +293,8 @@ CARDS = ["The Shawshank Redemption (1994)",
    "Brokeback Mountain (2005)",
    "The Impossible (2012)",
    "The Hangover (2009)",
-   "The Social Network (2010)"
+   "The Social Network (2010)".
+   "Rear Window (1954)",
+   "Some Like It Hot (1959)",
+   "The Apartment (1960)"
 ]
