@@ -17,7 +17,7 @@ class DeckWidgetClass(pysidegui.QWidget):
       catLabel = pysidegui.QLabel("Category: ")
       self.catSelect = pysidegui.QComboBox()
       self.catSelect.addItems(categoryGetNames(categories))
-      self.catSelect.currentIndexChanged.connect(self.onDeckChanged)
+      self.catSelect.currentIndexChanged.connect(self.onCategoryChanged)
       catLayout.addWidget(catLabel)
       catLayout.addWidget(self.catSelect)
 
@@ -43,7 +43,14 @@ class DeckWidgetClass(pysidegui.QWidget):
       except IndexError:
          return None
 
+   def onCategoryChanged(self):
+      self.deckSelect.clear()
+      self.deckSelect.addItems(revLookupCategories[self.catSelect.currentText()][DECKS])
+      self.onDeckChanged()
+
    def onDeckChanged(self):
+      if self.deckSelect.currentText() == '':
+         return
       self.currDeck = revLookupCategories[self.catSelect.currentText()][GET_CARDS](self.deckSelect.currentText())[:]
       shuffle(self.currDeck)
       self.deckChanged.emit()

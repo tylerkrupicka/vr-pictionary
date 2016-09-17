@@ -23,17 +23,25 @@ def start():
 
    id = 1
    print()
-   for deck in category[DECKS]:
-      print("%d) %s" % (id, deck))
-      id += 1
-
-   try:
-      deck = int(input("Pick a deck: "))
-      if deck not in range(1,id):
-         raise ValueError
-   except ValueError:
-      print("Not a valid deck")
+   numDecks = len(category[DECKS])
+   if numDecks == 0:
+      print("No decks for %s" % category)
       return
+   elif numDecks == 1:
+      deck = id
+      print("Playing with deck: %s" % category[DECKS][0])
+   else:
+      for deck in category[DECKS]:
+         print("%d) %s" % (id, deck))
+         id += 1
+
+      try:
+         deck = int(input("Pick a deck: "))
+         if deck not in range(1,id):
+            raise ValueError
+      except ValueError:
+         print("Not a valid deck")
+         return
 
    try:
       engine = Engine(category[GET_CARDS](deck))
@@ -45,7 +53,6 @@ def start():
 
 def main():
    print("Welcome to Pictionary!")
-
    if "--no-gui" in sys.argv:
       while True:
          try:
