@@ -46,14 +46,25 @@ def start():
 def main():
    print("Welcome to Pictionary!")
 
-   while True:
-      try:
-         start()
-      except (EOFError, KeyboardInterrupt):
-         pass
-      finally:
-         if input("\nPlay again? (y/n) ").lower() != "y":
-            break
+   if "--no-gui" in sys.argv:
+      while True:
+         try:
+            start()
+         except (EOFError, KeyboardInterrupt):
+            pass
+         finally:
+            if input("\nPlay again? (y/n) ").lower() != "y":
+               break
+   else:
+      import PySide.QtCore as pysidecore
+      import PySide.QtGui as pysidegui
+
+      from vr_pictionary.gui import MainWindow
+
+      application = pysidegui.QApplication([])
+      application.setStyle("Cleanlooks")
+      mainWindow = MainWindow.MainWindowClass()
+      exit(application.exec_())
 
 if __name__ == '__main__':
 

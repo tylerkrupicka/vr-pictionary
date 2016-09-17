@@ -28,5 +28,7 @@ for file in _cardFiles:
 def GET_CARDS(difficulty):
    try:
       return _decks[DECKS[difficulty-1]]
+   except TypeError:
+      return _decks[difficulty]
    except (IndexError, KeyError):
       raise DifficultyNotFoundException(difficulty)

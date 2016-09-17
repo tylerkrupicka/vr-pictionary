@@ -1,4 +1,5 @@
 categories = {}
+revLookupCategories = {}
 _numCategories = 0
 
 from os import listdir
@@ -12,6 +13,8 @@ for dir in _categoryDirs:
    try:
       mod = import_module(dir, "vr_pictionary")
       categories[_numCategories + 1] = (mod.NAME, mod.DECKS, mod.GET_CARDS)
+      # For comboboxes
+      revLookupCategories[mod.NAME] = (None, mod.DECKS, mod.GET_CARDS)
       _numCategories += 1
    except (ImportError, AttributeError, TypeError):
       pass # TODO: Not sure what I should do here yet
@@ -19,3 +22,6 @@ for dir in _categoryDirs:
 NAME = 0
 DECKS = 1
 GET_CARDS = 2
+
+def categoryGetNames(self):
+   return [value[NAME] for key, value in self.items()]
