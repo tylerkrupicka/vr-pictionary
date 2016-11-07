@@ -12,7 +12,7 @@ class ScoreBoardWidgetClass(pysidegui.QWidget):
    def setup(self):
       self.addBox = pysidegui.QGridLayout()
       self.teamName = pysidegui.QLineEdit("")
-      self.teamName.setMaxLength(10)
+      self.teamName.setMaxLength(20)
       self.addButton = pysidegui.QPushButton("+")
       self.addButton.setFixedSize(20, 20)
       self.addButton.clicked.connect(self.addTeam)
