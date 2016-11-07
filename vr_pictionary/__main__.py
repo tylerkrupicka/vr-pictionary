@@ -52,8 +52,8 @@ def start():
       raise e
 
 def main():
-   print("Welcome to Pictionary!")
    if "--no-gui" in sys.argv:
+      print("Welcome to Pictionary!")
       while True:
          try:
             start()
@@ -63,8 +63,13 @@ def main():
             if input("\nPlay again? (y/n) ").lower() != "y":
                break
    else:
-      import PySide.QtCore as pysidecore
-      import PySide.QtGui as pysidegui
+      try:
+         import PySide.QtCore as pysidecore
+         import PySide.QtGui as pysidegui
+      except ImportError:
+         sys.argv.append("--no-gui")
+         main()
+         exit()
 
       from vr_pictionary.gui import MainWindow
 
