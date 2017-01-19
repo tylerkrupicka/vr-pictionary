@@ -1,7 +1,33 @@
 # vr-pictionary
 Quick script for playing vr pictionary with movies, etc
 
-To run, just enter the following command:
+#### Dependencies
+
+* PySide
+
+Installation:
+
+`pip install PySide --only-binary :all:`
+
+If you experience the following error (Unix systems):
+
+```
+>>> import PySide.QtGui
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: dlopen(/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/PySide/QtGui.so, 2): Library not loaded: libpyside.cpython-34m.1.2.dylib
+  Referenced from: /Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/PySide/QtGui.so
+  Reason: image not found
+```
+
+Then just export the following environment variable in your bash_profile or bashrc:
+
+```
+DYLD_LIBRARY_PATH=/your/path/to/pyside/libraries
+export DYLD_LIBRARY_PATH
+```
+
+Then to run, just enter the following command:
 
 `python vr_pictionary`
 
